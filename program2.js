@@ -1,4 +1,4 @@
-const decodeTheRing = function (s, p) {
+const decodeTheRing  {
 
   function isMatch(message, pattern) {
     const memo = {};
