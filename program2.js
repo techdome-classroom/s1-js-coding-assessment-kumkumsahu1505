@@ -4,8 +4,7 @@ const decodeTheRing = function (s, p) {
     const memo = {};
   
     function dfs(mIndex, pIndex) {
-      // Use backticks for template literals to create the memoization key
-      const key = `${mIndex}:${pIndex}`;
+      const key = ${mIndex}:${pIndex};
       if (key in memo) return memo[key];
   
       // If both message and pattern are fully processed
@@ -20,7 +19,7 @@ const decodeTheRing = function (s, p) {
   
       // If current pattern character is '*'
       if (pattern[pIndex] === '*') {
-        // '*' can represent zero or more characters
+        // * can represent zero or more characters
         if (dfs(mIndex, pIndex + 1) || (mIndex < message.length && dfs(mIndex + 1, pIndex))) {
           memo[key] = true;
           return true;
@@ -43,4 +42,13 @@ const decodeTheRing = function (s, p) {
         }
       }
   
-      memo
+      memo[key] = false;
+      return false;
+    }
+  
+    return dfs(0, 0);
+  }
+
+  };
+  
+  module.exports = decodeTheRing;
